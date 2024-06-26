@@ -16,4 +16,3 @@ class Solution {
         return answer;
     }
 }
-//queries[2][3]
