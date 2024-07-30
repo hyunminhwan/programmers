@@ -7,6 +7,7 @@ class Solution {
             for(int j=0; j<str.length;j++){
                 babbling[i]=babbling[i].replace(str[j]," ").trim();
             }
+            
             if(babbling[i].equals("")){
                 answer++;
             }
