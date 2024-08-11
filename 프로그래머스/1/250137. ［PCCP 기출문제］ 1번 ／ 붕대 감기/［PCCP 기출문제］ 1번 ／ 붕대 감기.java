@@ -4,29 +4,30 @@ class Solution {
         int count = 0;
         int attacks_index=0;
         for(int i=0;i<=attacks[attacks.length-1][0];i++){
-                count++;
+                count++; //연속 회복 체크
                if(attacks_index < attacks.length && attacks[attacks_index][0] == i){
-                   count = 0;
-                   health -=attacks[attacks_index++][1];
+                   count = 0; // 공격당했을때 다시 0으로 초기화
+                   health -=attacks[attacks_index++][1]; //공격피해량 감소
                     if(health<=0){
-                        return -1;
+                        return -1; // 피가 0이되면 -1 을 리턴
                     }
                }else{
                    if(health<maxHealth){
-                        health+=bandage[1];
+                        health+=bandage[1]; //공격 받지 않을때 +1 씩 체력증가
                         if(count==bandage[0]){
-                            health+=bandage[2];
-                            count=0;
+                            health+=bandage[2]; // 연속회복 성공시 + bandage[2] 만큼 추가 증가
+                            count=0; // 다시 0으로 초기화
                             
                         }
                        if(health>maxHealth){
-                            health=maxHealth;
+                            health=maxHealth; // 피가 더 많이 찻을때 최대치로 변경
                         }
                     }
                }
         }
         if(health<=0){
             health=-1;
+            //총피해량이 0이하일시 -1 리턴
         }
         return health;
     }
